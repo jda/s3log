@@ -6,6 +6,7 @@ import (
 	"net"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -49,7 +50,9 @@ func Parse(line string) (Entry, error) {
 	e.RequestID = l[6]
 	e.Operation = l[7]
 	e.Key = l[8]
-	e.RequestURI = l[9]
+
+	prequestURI := l[9]
+	e.RequestURI = strings.Replace(prequestURI, `"`, "", -1)
 
 	pstatus, err := strconv.Atoi(l[10])
 	if err != nil {
@@ -107,9 +110,21 @@ func Parse(line string) (Entry, error) {
 	}
 	e.Turnaround = pturnaround
 
-	e.Referrer = l[16]
-	e.UserAgent = l[17]
-	e.Version = l[18]
+	pReferrer := l[16]
+	pReferrer = strings.Replace(pReferrer, `"`, "", -1)
+	if pReferrer == "-" {
+		pReferrer = ""
+	}
+	e.Referrer = pReferrer
+
+	pUserAgent := l[17]
+	e.UserAgent = strings.Replace(pUserAgent, `"`, "", -1)
+
+	pVersion := l[18]
+	if pVersion == "-" {
+		pVersion = ""
+	}
+	e.Version = pVersion
 
 	return e, nil
 }
