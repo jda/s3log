@@ -21,10 +21,10 @@ func TestInputCaseE(t *testing.T) {
 	ruri := "PUT /mybucket/s3-dg.pdf HTTP/1.1"
 	hstatus := 200
 	errorCode := "-"
-	bytesSent := 0
-	objectSize := 4406583
-	totalTime := 41754
-	turnaround := 28
+	bytesSent := int64(0)
+	objectSize := int64(4406583)
+	totalTime := time.Duration(41754) * time.Millisecond
+	turnaround := time.Duration(28) * time.Millisecond
 	referrer := ""
 	ua := "S3Console/0.4"
 	version := ""

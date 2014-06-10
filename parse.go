@@ -45,9 +45,9 @@ func Parse(line string) (Entry, error) {
 	e.Error = perrorRaw
 
 	pbytesRaw := l[12]
-	pbytes := 0
+	var pbytes int64
 	if pbytesRaw != "-" {
-		pbytes, err = strconv.Atoi(pbytesRaw)
+		pbytes, err = strconv.ParseInt(pbytesRaw, 10, 64)
 		if err != nil {
 			return e, err
 		}
@@ -55,9 +55,9 @@ func Parse(line string) (Entry, error) {
 	e.Bytes = pbytes
 
 	psizeRaw := l[13]
-	psize := 0
+	var psize int64
 	if psizeRaw != "-" {
-		psize, err = strconv.Atoi(l[13])
+		psize, err = strconv.ParseInt(l[13], 10, 64)
 		if err != nil {
 			return e, err
 		}
@@ -72,7 +72,7 @@ func Parse(line string) (Entry, error) {
 			return e, err
 		}
 	}
-	e.Total = ptotal
+	e.Total = time.Duration(ptotal) * time.Millisecond
 
 	pturnaroundRaw := l[15]
 	pturnaround := 0
@@ -84,7 +84,7 @@ func Parse(line string) (Entry, error) {
 			return e, err
 		}
 	}
-	e.Turnaround = pturnaround
+	e.Turnaround = time.Duration(pturnaround) * time.Millisecond
 
 	pReferrer := l[16]
 	pReferrer = strings.Replace(pReferrer, `"`, "", -1)

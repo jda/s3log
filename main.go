@@ -18,15 +18,15 @@ type Entry struct {
 	Operation  string
 	Key        string // key requested from bucket
 	RequestURI string
-	Status     int    // HTTP status code
-	Error      string // Error code
-	Bytes      int    // Bytes sent to requester
-	Size       int    // size of object requested
-	Total      int    // time spent serving request
-	Turnaround int    // time spent handling request before response is sent
-	Referrer   string // HTTP referred
-	UserAgent  string // HTTP UserAgent
-	Version    string // Request version ID
+	Status     int           // HTTP status code
+	Error      string        // Error code
+	Bytes      int64         // Bytes sent to requester
+	Size       int64         // size of object requested
+	Total      time.Duration // time spent serving request
+	Turnaround time.Duration // time spent handling request before response is sent
+	Referrer   string        // HTTP referred
+	UserAgent  string        // HTTP UserAgent
+	Version    string        // Request version ID
 }
 
 var logLine = regexp.MustCompile(`[^" ]+|("[^"]*")`)

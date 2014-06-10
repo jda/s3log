@@ -21,10 +21,10 @@ func TestInputCaseD(t *testing.T) {
 	ruri := "GET /mybucket?versioning HTTP/1.1"
 	hstatus := 200
 	errorCode := "-"
-	bytesSent := 113
-	objectSize := 0
-	totalTime := 33
-	turnaround := 0
+	bytesSent := int64(113)
+	objectSize := int64(0)
+	totalTime := time.Duration(33) * time.Millisecond
+	turnaround := time.Duration(0) * time.Millisecond
 	referrer := ""
 	ua := "S3Console/0.4"
 	version := ""

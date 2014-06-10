@@ -21,10 +21,10 @@ func TestInputCaseC(t *testing.T) {
 	ruri := "GET /mybucket?policy HTTP/1.1"
 	hstatus := 404
 	errorCode := "NoSuchBucketPolicy"
-	bytesSent := 297
-	objectSize := 0
-	totalTime := 38
-	turnaround := 0
+	bytesSent := int64(297)
+	objectSize := int64(0)
+	totalTime := time.Duration(38) * time.Millisecond
+	turnaround := time.Duration(0) * time.Millisecond
 	referrer := ""
 	ua := "S3Console/0.4"
 	version := ""
