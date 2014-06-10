@@ -3,7 +3,7 @@ parsing and generating logs in Amazon S3's Server Access Log Format
 as described at http://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html
 
 ## Docs
-
+[![GoDoc](https://godoc.org/github.com/jda/s3log?status.png)](https://godoc.org/github.com/jda/s3log)
 
 ## License
 > Copyright (c) 2014 Jonathan Auer

@@ -58,6 +58,7 @@ func (e *Entry) String() string {
 	return s
 }
 
+// Print writes the Entry to STDOUT
 func (e *Entry) Print() {
 	fmt.Println(e.String())
 }

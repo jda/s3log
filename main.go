@@ -1,4 +1,4 @@
-// Work with Amazon S3-style logs
+// Package s3log aids in parsing and generating logs in Amazon S3's Server Access Log Format
 package s3log
 
 import (

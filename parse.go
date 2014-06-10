@@ -109,7 +109,7 @@ func parseTime(tl string) (time.Time, error) {
 	tl = brackets.ReplaceAllString(tl, "")
 	t, err := time.Parse("02/Jan/2006:15:04:05 -0700", tl)
 	if err != nil {
-		return time.Now(), fmt.Errorf("Error parsing time: %s", err)
+		return time.Now(), fmt.Errorf("could not parse time: %s", err)
 	}
 
 	t = t.In(time.UTC)
