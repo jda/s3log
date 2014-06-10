@@ -1,3 +1,4 @@
+// Work with Amazon S3-style logs
 package s3log
 
 import (
@@ -10,6 +11,7 @@ import (
 	"time"
 )
 
+// A Entry is a structured log entry that describes a S3 request
 type Entry struct {
 	Owner      string
 	Bucket     string
@@ -34,6 +36,7 @@ type Entry struct {
 var logLine = regexp.MustCompile(`[^" ]+|("[^"]*")`)
 var brackets = regexp.MustCompile(`[\[\]]`)
 
+// Parse parses a Amazon S3-style log line into a Entry
 func Parse(line string) (Entry, error) {
 	e := Entry{}
 	l := logLine.FindAllString(line, -1)
