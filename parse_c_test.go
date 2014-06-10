@@ -105,4 +105,9 @@ func TestInputCaseC(t *testing.T) {
 	if res.Version != version {
 		t.Errorf("Version: got %s. should be %s", res.Version, version)
 	}
+
+	rOut := res.String()
+	if rOut != line {
+		t.Errorf("Output line does not match input:\n In: %s\nOut: %s\n", line, rOut)
+	}
 }
